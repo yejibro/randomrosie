@@ -1,0 +1,27 @@
+#!/opt/local/bin/bash
+
+. ~/.yeji/globalsettings.conf
+. ~/.bashrc
+
+ADJF="$CONFDIR/adjectives.txt"
+VERBF="$CONFDIR/verbs.txt"
+NOUNF="$CONFDIR/nouns.txt"
+
+local_adj=$(cat $ADJF | shuf -n 1)
+local_verb=$(cat $VERBF | shuf -n 1)
+local_noun=$(cat $NOUNF | shuf -n 1)
+
+fancyname="${local_verb^}${local_adj^}${local_noun^}"
+
+#find ~/k/blackpink/rose /Users/yeji/k2/Blackpink.Rose/roses_are_rosie /Users/yeji/k2/Blackpink.Rose/firstlove /Users/yeji/Pictures/allure -type f
+
+file=$(cat $DBDIR/rosielist | shuf -n 1)
+fnonly=$(basename -- "$file")
+fileext="${fnonly##*.}"
+while [ "$fileext" == "mp4" ]; do
+	file=$(cat $DBDIR/rosielist | shuf -n 1)
+	fnonly=$(basename -- "$file")
+	fileext="${fnonly##*.}"
+done
+
+cp "$file" ~/Desktop/rosies/"${fancyname}.${fileext}"

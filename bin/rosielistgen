@@ -1,0 +1,5 @@
+find ~/k/blackpink/rose \
+	/Users/yeji/k2/Blackpink.Rose/roses_are_rosie \
+	/Users/yeji/k2/Blackpink.Rose/firstlove \
+	/Users/yeji/Pictures/allure \
+	-type f > ~/.yeji/db/rosielist
